@@ -1,0 +1,193 @@
+/* reset all automatic paddings and margins */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* variables and styles from figma */
+:root {
+    /* colors */
+    --white : #FFFFFF;
+    --grey-100 : #EFEFEF;
+    --grey-200 : #D5D4D4;
+    --grey-700 : #474747;
+    --grey-900 : #252525;
+    --blue : #0F01FB;
+    --blue-darker : #08026C;
+
+    /* drop shadows */
+    --regular-shadow: 0 0 16px 0 var(--grey-100);
+    --hovered-shadow: 0 0 16px 0 var(--grey-200);
+
+    /* spaces */
+    --space-05: 0.5em;
+    --space-1 : 1em;
+    --space-2 : 2em;
+    --space-3 : 3em;
+    --space-4 : 4em;
+}
+
+/* Utility classes */
+/* 
+    ℹ️
+    utility classes are small classes that hava one purpose: aligning two elements, change color or add a padding.
+    Most of the time, its css properties I would usually repeat along the code. Here I only define it once and 
+    apply the class to my html elements. 
+    It's part of the DRY (don't repeat yourself) principle : https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
+*/
+
+/*flexboxes memo: https://flexbox.malven.co/*/
+.flex{display:flex;}
+
+.wrap{flex-wrap: wrap;}
+
+.column{flex-direction: column;}
+.row{flex-direction: row;}
+
+.space-between{justify-content: space-between;}
+.center{justify-content: center;}
+.justify-end{justify-content: flex-end;}
+
+.small-padding-vert{
+    padding: 0.5em 0;
+}
+
+.regular-padding-vert{
+    padding: 1em 0;
+}
+
+.underlined{
+    /*  
+        Here, I tried to use the following property:  text-decoration: underline;
+        It only underline the text, not the icon
+
+            see more ->
+            --------
+
+        I want the full element to be underline, so I asked chat GPT: 
+        
+            Hey, I want to underline an html element containing text and a icon from lucide icon
+            <h4>See more <i data-lucide="arrow-right"></i></h4> 
+            What is the best method to achieve that, because text-decoration: underline on the H4 doesn't work
+        
+        ChatGPT answered me: 
+            The issue happens because text-decoration only applies reliably to text content, 
+            and the Lucide icon (<i> element replaced by an SVG) is not treated as text by the browser. 
+            As a result, the underline does not extend beneath the icon.
+            
+            There are several ways to handle this, but one method is generally considered cleaner 
+            and more robust for UI work.
+
+            [...] It gave me different methods to achieve the underline effect.
+            border-bottom gave the best results.
+    */
+    border-bottom: 1px solid var(--grey-900);
+    width: fit-content; /* width = hug content */
+}
+.accent{
+    color: var(--blue);
+}
+.bolder{
+    font-weight: 500;
+}
+/* ##### specific properties ##### */
+
+/* ## FONTS ## */
+h1{
+    font-family: "Space Grotesk";
+}
+h2{
+    font-weight: 400;
+    font-size: 1.4em;
+}
+h3{
+    font-weight: 300;
+    font-size: 1em;
+}
+h4{
+    font-weight: 400;
+    font-size: 1em;
+}
+h5{
+    font-weight: 200;
+    font-size: .8em;
+}
+/* 
+    lucide is a class from lucide icons to change size and color of their icons 
+    see more here: https://lucide.dev/guide/advanced/global-styling
+*/
+.lucide {
+    width: var(--space-1);
+    height: var(--space-1);
+}
+
+
+/* ## BANNER ## */
+#banner {
+    width: 100%;
+    background-color: var(--grey-100);
+
+}
+
+/* ## NAV ## */
+nav {
+    margin: var(--space-1) 0;
+}
+
+nav #nav-item{
+    width: 30%;
+}
+
+
+body {
+    /* style I want to apply to all texts */
+    font-family: Inter, sans-serif;
+    color: var(--grey-900);
+
+    padding-bottom: 40em;
+}
+
+#main-container{
+    max-width: 1200px;
+    width: 1200px;
+}
+
+.card {
+    /* 
+        calc allow to do basic maths in css  
+        https://developer.mozilla.org/fr/docs/Web/CSS/Reference/Values/calc
+    */
+    width : calc(288px - var(--space-1)*2);
+    padding: var(--space-1);
+    box-shadow:var(--regular-shadow);
+}
+
+.card img {
+    /*
+        max-height limit the image size and object-fit ensure the image keep a correct display ratio
+        https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/object-fit
+    */
+    max-height: 200px;
+    object-fit: cover;
+}
+
+#filters {
+    width: 288px;
+}
+/* 
+    Suggested by chatGPT to hide the summary marker and use a custom marker from lucide
+    I modified the answer to target the svg instead of the I element
+*/
+summary {
+  list-style: none;
+  width: 100%;
+}
+summary::-webkit-details-marker {
+  display: none; /* Safari / Chrome */
+}
+details[open] span svg{
+  transform: rotate(180deg);
+}
+span svg{
+  transition: transform 0.2s ease;
+}

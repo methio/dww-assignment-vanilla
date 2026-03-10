@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS ressources -->
+    <link href="style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<body class="flex center">
+
+    <div id="main-container">
+
+        <div id="banner" class="flex row center">
+            <h3 class="small-padding-vert">Discover our new collection - <span class="underlined">lets go↗</span></h3>
+        </div>
+
+        <nav class="flex row space-between full-width">
+            <h1>Shoes Gallery</h1>
+            <div id="nav-item" class="flex row space-between">
+                <h3>Men</h3>
+                <h3>Women</h3>
+                <h3>Kids</h3>
+                <h3>Brands</h3>
+                <h3 class="accent">Deals</h3>
+                <h3>Cart <i data-lucide="shopping-cart"></i></h3>
+            </div>
+        </nav>
+
+        <section id="recommandations">
+            <div class="section-header flex row space-between">
+                <h2>Recommandations</h2>
+                <h4 class="underlined">See more <i data-lucide="arrow-right"></i></h4>
+            </div>
+
+            <div id="cards-recommandations-container" class="flex row space-between regular-padding-vert">
+
+                <div class="card flex column">
+                    <img src="https://makerslab.em-lyon.com/dww/data/products/forum-low-og.png" alt="shoes image">
+                    <div class="favorite-container full-width flex row justify-end">
+                        <i data-lucide="heart"></i>
+                    </div>
+                    <h3>Forum low og</h3>
+                    <h5>Adidas original</h5>
+                    <h5>Men</h5>
+                    <div class="full-width flex row justify-end">
+                        <h3 class="accent bolder">79.90€</h3>
+                    </div>
+                    
+                </div> 
+                
+                <div class="card flex column">
+                    <img src="https://makerslab.em-lyon.com/dww/data/products/forum-low-og.png" alt="shoes image">
+                    <div class="favorite-container full-width flex row justify-end">
+                        <i data-lucide="heart"></i>
+                    </div>
+                    <h3>Forum low og</h3>
+                    <h5>Adidas original</h5>
+                    <h5>Men</h5>
+                    <div class="full-width flex row justify-end">
+                        <h3 class="accent bolder">79.90€</h3>
+                    </div>
+                    
+                </div> 
+
+                <div class="card flex column">
+                    <img src="https://makerslab.em-lyon.com/dww/data/products/forum-low-og.png" alt="shoes image">
+                    <div class="favorite-container full-width flex row justify-end">
+                        <i data-lucide="heart"></i>
+                    </div>
+                    <h3>Forum low og</h3>
+                    <h5>Adidas original</h5>
+                    <h5>Men</h5>
+                    <div class="full-width flex row justify-end">
+                        <h3 class="accent bolder">79.90€</h3>
+                    </div>
+                    
+                </div> 
+
+                <div class="card flex column">
+                    <img src="https://makerslab.em-lyon.com/dww/data/products/forum-low-og.png" alt="shoes image">
+                    <div class="favorite-container full-width flex row justify-end">
+                        <i data-lucide="heart"></i>
+                    </div>
+                    <h3>Forum low og</h3>
+                    <h5>Adidas original</h5>
+                    <h5>Men</h5>
+                    <div class="full-width flex row justify-end">
+                        <h3 class="accent bolder">79.90€</h3>
+                    </div>
+                    
+                </div> 
+                
+            </div>
+        </section>
+
+        <section id="main-content">
+            <div class="section-header flex row space-between">
+                <h2>All our shoes</h2>
+                <h4 class="underlined">1032 result(s)</h4>
+            </div>
+
+            <div id="section-wrapper">
+                <div id="filters">
+                    <!-- 
+                        I use <details> tag to toggle filter 
+                        https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details 
+                        
+                        the sub-tag summary is useful, but I want to modify the way it works. 
+                        Right now, I get the following pattern                                  | v Sort by:   |
+                        I want the chevron to be after the text, as in my figma prototype       |   Sort by:  v|
+                        I don't know how to achieve that, so I asked chatGPT the following prompt: 
+
+                        Hey, 
+                        I am a student, creating a website who sells shoes. I want to add filters and sorts options. 
+                        I used the following code to sort my elements: 
+                            <details id="sort" name="filters">
+                                <summary class="underlined">Sort by: <i data-lucide="chevron-down"></i></summary>
+
+                                <input type="radio" id="html" name="fav_language" value="HTML">
+                                <label for="html">Price Low to High</label><br>
+                                <input type="radio" id="css" name="fav_language" value="CSS">
+                                <label for="css">Price High to Low</label><br>
+                                <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+                                <label for="javascript">Product name A - Z</label>
+                            </details>
+                        The problem is that I want the ::marker pseudo-element of the summary tag to be after the text within the summary tag. (ref: https://developer.mozilla.org/fr/docs/Web/CSS/Reference/Selectors/::marker)
+                        How to do it with CSS? 
+
+                        I get the following answer from ChatGPT: 
+                            Short answer: you cannot move the ::marker of <summary> after the text using CSS alone. The marker position is controlled by the browser and always appears before the content of the <summary> element.
+                            However, the common solution is to hide the default marker and create your own with CSS, which you can position wherever you want.
+                            [...]
+                            ChatGPT suggests to hide the marker and then add mine using my lucide icon and rotate it when summary expands. 
+                    -->
+
+                    <details id="sort" name="filters">
+                        <summary class="flex row space-between"><span>Sort by:</span><span><i data-lucide="chevron-down"></i></span></summary>
+                        <input type="radio" id="lth" name="sortBy" value="lth">
+                        <label for="html">Price Low to High</label><br>
+                        <input type="radio" id="htl" name="sortBy" value="htl">
+                        <label for="css">Price High to Low</label><br>
+                        <input type="radio" id="az" name="sortBy" value="az">
+                        <label for="javascript">Product name A - Z</label><br>
+                        <input type="radio" id="za" name="sortBy" value="za">
+                        <label for="javascript">Product name Z - A</label>
+                    </details>
+                    <details id="brands" name="filters">
+                        <summary class="flex row space-between"><span>Brands</span><span><i data-lucide="chevron-down"></i></span></summary>
+                        <input type="radio" id="lth" name="sortBy" value="lth">
+                        <label for="html">nothing to see for now</label>
+                    </details>
+                    <details id="gender" name="filters">
+                        <summary class="flex row space-between"><span>Gender</span><span><i data-lucide="chevron-down"></i></span></summary>
+                        <input type="radio" id="lth" name="sortBy" value="lth">
+                        <label for="html">nothing to see for now</label>
+                    </details>
+                    <details id="Sizes" name="filters">
+                        <summary class="flex row space-between"><span>Sizes</span><span><i data-lucide="chevron-down"></i></span></summary>
+                        <input type="radio" id="lth" name="sortBy" value="lth">
+                        <label for="html">nothing to see for now</label>
+                    </details>
+                    <details id="Colour" name="filters">
+                        <summary class="flex row space-between"><span>Colour</span><span><i data-lucide="chevron-down"></i></span></summary>
+                        <input type="radio" id="lth" name="sortBy" value="lth">
+                        <label for="html">nothing to see for now</label>
+                    </details>
+                    <details id="Price" name="filters">
+                        <summary class="flex row space-between"><span>Price</span><span><i data-lucide="chevron-down"></i></span></summary>
+                        <input type="radio" id="lth" name="sortBy" value="lth">
+                        <label for="html">nothing to see for now</label>
+                    </details>
+
+                </div>
+                <div id="cards-container">
+
+                </div>
+            </div>
+
+            <div id="card-container" class="flex row space-between regular-padding-vert">
+
+            </div>
+
+        </section>
+    </div>
+
+
+    
+
+    <!-- lucide icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
