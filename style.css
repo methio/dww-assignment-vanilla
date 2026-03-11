@@ -64,13 +64,13 @@
             see more ->
             --------
 
-        I want the full element to be underline, so I asked chat GPT: 
+        I want the full element to be underline, so I asked Qwen: 
         
             Hey, I want to underline an html element containing text and a icon from lucide icon
             <h4>See more <i data-lucide="arrow-right"></i></h4> 
             What is the best method to achieve that, because text-decoration: underline on the H4 doesn't work
         
-        ChatGPT answered me: 
+        Qwen answered me: 
             The issue happens because text-decoration only applies reliably to text content, 
             and the Lucide icon (<i> element replaced by an SVG) is not treated as text by the browser. 
             As a result, the underline does not extend beneath the icon.
@@ -79,7 +79,7 @@
             and more robust for UI work.
 
             [...] It gave me different methods to achieve the underline effect.
-            border-bottom gave the best results.
+            In the end, border-bottom gave the best results.
     */
     border-bottom: 1px solid var(--grey-900);
     width: fit-content; /* width = hug content */
@@ -175,7 +175,7 @@ body {
     width: 288px;
 }
 /* 
-    Suggested by chatGPT to hide the summary marker and use a custom marker from lucide
+    Suggested by Qwen to hide the summary marker and use a custom marker from lucide
     I modified the answer to target the svg instead of the I element
 */
 summary {
