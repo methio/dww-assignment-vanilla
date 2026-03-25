@@ -10,7 +10,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
 
-    <title>Document</title>
+    <title>Shoe Gallery</title>
+
+    <!-- JS ressources -->
+     <!-- defer parameter delay the script page load -->
+     <script src="script.js" defer></script>
+
+
 </head>
 <body class="flex center">
 
@@ -39,62 +45,6 @@
             </div>
 
             <div id="cards-recommandations-container" class="flex row space-between regular-padding-vert">
-
-                <div class="card flex column">
-                    <img src="https://makerslab.em-lyon.com/dww/data/products/forum-low-og.png" alt="shoes image">
-                    <div class="favorite-container full-width flex row justify-end">
-                        <i data-lucide="heart"></i>
-                    </div>
-                    <h3>Forum low og</h3>
-                    <h5>Adidas original</h5>
-                    <h5>Men</h5>
-                    <div class="full-width flex row justify-end">
-                        <h3 class="accent bolder">79.90€</h3>
-                    </div>
-                    
-                </div> 
-                
-                <div class="card flex column">
-                    <img src="https://makerslab.em-lyon.com/dww/data/products/forum-low-og.png" alt="shoes image">
-                    <div class="favorite-container full-width flex row justify-end">
-                        <i data-lucide="heart"></i>
-                    </div>
-                    <h3>Forum low og</h3>
-                    <h5>Adidas original</h5>
-                    <h5>Men</h5>
-                    <div class="full-width flex row justify-end">
-                        <h3 class="accent bolder">79.90€</h3>
-                    </div>
-                    
-                </div> 
-
-                <div class="card flex column">
-                    <img src="https://makerslab.em-lyon.com/dww/data/products/forum-low-og.png" alt="shoes image">
-                    <div class="favorite-container full-width flex row justify-end">
-                        <i data-lucide="heart"></i>
-                    </div>
-                    <h3>Forum low og</h3>
-                    <h5>Adidas original</h5>
-                    <h5>Men</h5>
-                    <div class="full-width flex row justify-end">
-                        <h3 class="accent bolder">79.90€</h3>
-                    </div>
-                    
-                </div> 
-
-                <div class="card flex column">
-                    <img src="https://makerslab.em-lyon.com/dww/data/products/forum-low-og.png" alt="shoes image">
-                    <div class="favorite-container full-width flex row justify-end">
-                        <i data-lucide="heart"></i>
-                    </div>
-                    <h3>Forum low og</h3>
-                    <h5>Adidas original</h5>
-                    <h5>Men</h5>
-                    <div class="full-width flex row justify-end">
-                        <h3 class="accent bolder">79.90€</h3>
-                    </div>
-                    
-                </div> 
                 
             </div>
         </section>
@@ -102,10 +52,10 @@
         <section id="main-content">
             <div class="section-header flex row space-between">
                 <h2>All our shoes</h2>
-                <h4 class="underlined">1032 result(s)</h4>
+                <h4 class="underlined"><span id="results-lenght">1032</span> result(s)</h4>
             </div>
 
-            <div id="section-wrapper">
+            <div id="section-wrapper" class="flex row gap-medium">
                 <div id="filters">
                     <!-- 
                         I use <details> tag to toggle filter 
@@ -177,15 +127,10 @@
                     </details>
 
                 </div>
-                <div id="cards-container">
-
+                <div id="cards-container" class="flex row space-between wrap gap-medium regular-padding-vert">
+                    <!-- The cards will be created using JavaScript. -->
                 </div>
             </div>
-
-            <div id="card-container" class="flex row space-between regular-padding-vert">
-
-            </div>
-
         </section>
     </div>
 

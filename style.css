@@ -48,13 +48,17 @@
 .center{justify-content: center;}
 .justify-end{justify-content: flex-end;}
 
-.small-padding-vert{
-    padding: 0.5em 0;
-}
+.align-center{align-items: center;}
+.gap-medium{gap: var(--space-1);}
 
-.regular-padding-vert{
-    padding: 1em 0;
-}
+.small-padding-vert{padding: 0.5em 0;}
+.regular-padding-vert{padding: 1em 0;}
+
+/* 
+    👆🏻 
+    As all of these classes possess just one attribute, 
+    they are written on a single line to enhance readability.
+*/
 
 .underlined{
     /*  
@@ -88,7 +92,21 @@
     color: var(--blue);
 }
 .bolder{
-    font-weight: 500;
+    font-weight: 700;
+}
+.icon-large{
+    width: var(--space-2)!important;
+    height: var(--space-2)!important;
+}
+
+.full-width{width:100%;}
+.align-right{
+    width: 100%;
+    text-align: end;
+}
+.hide-button-style{
+    border:none;
+    background: none;
 }
 /* ##### specific properties ##### */
 
@@ -102,15 +120,18 @@ h2{
 }
 h3{
     font-weight: 300;
-    font-size: 1em;
+    font-size: 1.2em;
+    padding: var(--space-1) 0;
+    color: var(--grey-900);
 }
 h4{
     font-weight: 400;
     font-size: 1em;
 }
 h5{
-    font-weight: 200;
-    font-size: .8em;
+    font-weight: 100;
+    font-size: 1em;
+    color: var(--grey-700);
 }
 /* 
     lucide is a class from lucide icons to change size and color of their icons 
@@ -126,25 +147,27 @@ h5{
 #banner {
     width: 100%;
     background-color: var(--grey-100);
-
 }
 
 /* ## NAV ## */
 nav {
     margin: var(--space-1) 0;
 }
-
 nav #nav-item{
-    width: 30%;
+    width: 40%;
 }
 
+/* target the h3 AND the svg at the same time */
+nav #nav-item h3:hover, nav #nav-item h3:hover > svg{
+    font-weight: 500;
+    stroke-width: 3px;
+}
 
+/* ## PAGE LAYOUT ## */
 body {
     /* style I want to apply to all texts */
     font-family: Inter, sans-serif;
     color: var(--grey-900);
-
-    padding-bottom: 40em;
 }
 
 #main-container{
@@ -152,27 +175,9 @@ body {
     width: 1200px;
 }
 
-.card {
-    /* 
-        calc allow to do basic maths in css  
-        https://developer.mozilla.org/fr/docs/Web/CSS/Reference/Values/calc
-    */
-    width : calc(288px - var(--space-1)*2);
-    padding: var(--space-1);
-    box-shadow:var(--regular-shadow);
-}
-
-.card img {
-    /*
-        max-height limit the image size and object-fit ensure the image keep a correct display ratio
-        https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/object-fit
-    */
-    max-height: 200px;
-    object-fit: cover;
-}
-
+/* ## FILTERS ## */
 #filters {
-    width: 288px;
+    min-width: 288px;
 }
 /* 
     Suggested by Qwen to hide the summary marker and use a custom marker from lucide
@@ -190,4 +195,97 @@ details[open] span svg{
 }
 span svg{
   transition: transform 0.2s ease;
+}
+
+/* ### CARDS AND POPUP ### */
+#cards-container{
+    width: 100%;
+}
+.card {
+    /* 
+        calc allow to do basic maths in css  
+        https://developer.mozilla.org/fr/docs/Web/CSS/Reference/Values/calc
+    */
+    width : 288px; /*calc(288px - var(--space-1)*2);  👈🏻 finaly not necessary */
+    padding: var(--space-1);
+    box-shadow:var(--regular-shadow);
+    transition: box-shadow .3s ;
+    background-color: var(--white);
+    border: none;
+    border-radius: 0.25em;
+    align-items: start;
+}
+.card:hover{
+    transition: box-shadow .3s ;
+    box-shadow:var(--hovered-shadow);
+}
+
+.card img {
+    /*
+        max-height limit the image size and object-fit ensure the image keep a correct display ratio
+        https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/object-fit
+    */
+    max-height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* modify the style of all popover elements */
+[popover]{
+    background-color: var(--white);
+    box-shadow:var(--hovered-shadow);
+
+    margin:auto; /* overwrite * properties */
+    width: 80vw;
+    height: 80vh;
+    border:none;
+    padding: var(--space-2);
+    overflow-y: hidden; /* no scroll vertically, bcs it flickers sometimes*/
+}
+
+.col {
+    width: 50%;
+}
+
+.col img{
+    object-fit: cover;
+    width: 100%;
+    height: 70%;
+}
+
+.shoes-sizes {
+    list-style: none;
+}
+
+.shoes-sizes li {
+    width: 3em;
+    height: 3em;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--grey-900);
+    border-radius: .5em;
+}
+/* small animation while hovering sizes card */
+.shoes-sizes li.size-available:hover{
+    transition: border-width 100ms;
+    border-width: 1.5px;
+}
+
+.size-unavailable {
+    color: var(--grey-200);
+    border-color: var(--grey-200) !important;
+}
+
+
+button.primary{
+    color: var(--grey-100);
+    background-color: var(--blue);
+    border: none;
+    padding: var(--space-1) var(--space-3);
+    font-size: 1em;
+
+    /* make sure button goes bottom right of the popover */
+    position:absolute;
+    bottom: var(--space-2);
+    right: var(--space-2);
 }
